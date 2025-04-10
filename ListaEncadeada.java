@@ -10,7 +10,7 @@ public class ListaEncadeada {
         ultimo = primeiro;
     }
 
-    public void adicionarFim(int valor) {
+    public void insereFim(int valor) {
         No runner = primeiro;
         if (estaVazia()) {
             primeiro = new No(valor);
@@ -77,5 +77,20 @@ public class ListaEncadeada {
         }
         //runner eh o ultimo no
         return s;
+    }
+
+    public void inverter() {
+        auxInverter(primeiro);
+        return;
+    }
+
+    private void auxInverter(No noAtual) {
+        if (noAtual == null) {
+            primeiro = null;
+            ultimo = null;
+            return;
+        }
+        auxInverter(noAtual.getProximo());
+        this.insereFim(noAtual.getInfo());
     }
 }
